@@ -22,6 +22,19 @@ public class UserCartService {
     public List<UserCart> getAllCart(){
         return userCartRepository.findAll();
     }
-  
+      @Transactional
+    public void addCart(UserCart userCart)
+    {
+        userCartRepository.save(userCart);
+    }
+    @Transactional
+    public boolean deleteCart(int productId)
+    {
+        long count=userCartRepository.count();
+      userCartRepository.deleteById(productId);
+        return count>userCartRepository.count();
+
+
+    }
 
 }
