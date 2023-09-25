@@ -3,7 +3,11 @@ package com.gainsight.onlineshopping.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="product")
+@Table(name="product",indexes={
+
+@Index(name = "prod_Name",columnList = "prod_Name"),
+        @Index(name="prod_Category",columnList = "prod_Category")
+})
 public class Product {
 
     @Id

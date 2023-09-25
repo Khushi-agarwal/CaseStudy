@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .left-content {
+    float: left;
+    width: 50%;
+}
+
+.right-content {
+    float: right;
+    width: 50%;
+}
+.centered-button {
+            background-color: brown;
+            color: white; 
+            padding: 10px 20px; 
+            font-size: 16px; /* Adjust font size */
+            margin-left: 33rem;
+        }
+        </style>
+    </head>
+
+    <body>
+        <h3>Search among the Products</h3>
+        <form id="search-form" onsubmit="searchProducts(event)">
+            <input type="text" id="search-query" name="q" placeholder="Search for products..." required>
+            <button type="submit">Search</button>
+        </form>
+        <div id="search-results"></div>
+   
+
+        <div class="container">
+            <h3>List of All Products</h3>
+            <div id="data-container" style="margin-top: 10px; background-color:aquamarine;"></div>
+        </div>
+       
+        <br>
+        <button id="checkout" class="centered-button">Check Out</button>
+
+        
+
+    </body>
+    <script src="test.js"></script>
+</html>
