@@ -23,7 +23,17 @@ public class ProductService {
     @Transactional(readOnly = true)
     public List<Product> getAllProducts(){return productRepository.findAll();
     }
-
+   @Transactional
+    public void addProducttoCart(int productId)
+    {
+        UserCart u=new UserCart(productId,1);
+        userCartService.addCart(u);
+    }
+    @Transactional
+    public void removeProductFromCart(int productId)
+    {
+        userCartService.deleteCart(productId);
+    }
  
 
 }

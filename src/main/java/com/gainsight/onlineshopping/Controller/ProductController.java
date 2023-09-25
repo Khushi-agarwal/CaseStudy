@@ -28,6 +28,18 @@ public class ProductController {
        return new ResponseEntity<List<Product>>(productService.getAllProducts(),HttpStatus.OK);
 
     }
+  @GetMapping(value="/add/{productId}")
+    @CrossOrigin
+    public void addButton(@PathVariable int productId)
+    {
+        productService.addProducttoCart(productId);
+    }
+    @GetMapping(value="/delete/{productId}")
+    @CrossOrigin
+    public void deleteButton(@PathVariable int productId)
+    {
+        productService.removeProductFromCart(productId);
+    }
    
 
 }
