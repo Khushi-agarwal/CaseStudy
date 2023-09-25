@@ -36,7 +36,11 @@ public class ProductService {
     {
         userCartService.deleteCart(productId);
     }
-
+//    @Transactional
+//    public Product findProductById(int productId)
+//    {
+//        Optional<Product> op=productRepository.findById();
+//    }
 
     @Transactional
     public List<Product> getSearch(String productName)
