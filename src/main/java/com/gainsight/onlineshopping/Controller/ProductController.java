@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-
+//Model model;
     @Autowired
     ProductService productService;
 
@@ -28,7 +28,7 @@ public class ProductController {
        return new ResponseEntity<List<Product>>(productService.getAllProducts(),HttpStatus.OK);
 
     }
-  @GetMapping(value="/add/{productId}")
+    @GetMapping(value="/add/{productId}")
     @CrossOrigin
     public void addButton(@PathVariable int productId)
     {
@@ -40,6 +40,14 @@ public class ProductController {
     {
         productService.removeProductFromCart(productId);
     }
-   
+
+
+    @GetMapping(value="/search/{productName}")
+    @CrossOrigin
+    public ResponseEntity<List<Product>> getsearch(@PathVariable String productName)
+    {
+
+        return new ResponseEntity<List<Product>>(productService.getSearch(productName),HttpStatus.OK);
+    }
 
 }

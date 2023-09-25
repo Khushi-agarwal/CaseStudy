@@ -16,7 +16,8 @@ public class UserCartController {
     @Autowired
     UserCartService userCartService;
 
- @PostMapping(consumes = "application/json")
+
+    @PostMapping(consumes = "application/json")
     public void addCart(UserCart userCart)
     {
         userCartService.addCart(userCart);
@@ -28,8 +29,6 @@ public class UserCartController {
             return HttpStatus.OK;
         return HttpStatus.NOT_MODIFIED;
     }
-
- 
     @GetMapping
     @CrossOrigin
     public ResponseEntity<List<UserCart>> getAllProducts()
@@ -37,6 +36,7 @@ public class UserCartController {
         return new ResponseEntity<List<UserCart>>(userCartService.getAllCart(),HttpStatus.OK);
 
     }
+
     @GetMapping("/increase/{productId}")
     @CrossOrigin
     public ResponseEntity<Integer> increase(@PathVariable int productId)
@@ -56,5 +56,4 @@ public class UserCartController {
         return ResponseEntity.notFound().build();
     }
 
-   
 }

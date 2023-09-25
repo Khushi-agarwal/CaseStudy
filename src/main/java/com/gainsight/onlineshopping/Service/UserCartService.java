@@ -16,13 +16,28 @@ public class UserCartService {
     @Autowired
     UserCartRepository userCartRepository;
 
-
+@Autowired
+ProductRepository productRepository;
 
     @Transactional(readOnly = true)
     public List<UserCart> getAllCart(){
         return userCartRepository.findAll();
     }
-   @Transactional
+    @Transactional
+    public void addCart(UserCart userCart)
+    {
+        userCartRepository.save(userCart);
+    }
+    @Transactional
+    public boolean deleteCart(int productId)
+    {
+        long count=userCartRepository.count();
+      userCartRepository.deleteById(productId);
+        return count>userCartRepository.count();
+
+
+    }
+    @Transactional
     public int increase(int productId)
     {
        Optional<UserCart> op= userCartRepository.findById(productId);
@@ -48,6 +63,19 @@ public class UserCartService {
         }
         return -1;
     }
-  
+    @Transactional(readOnly = true)
+    public double getPriceFromProductId(int productId)
+    {
+      Optional<Product> product=  productRepository.findById(productId);
+      if(product.isPresent())
+          return product.get().getProductPrice();
+      return 0;
+    }
+    @Transactional
+    public void deleteAll()
+    {
+        userCartRepository.deleteAll();
+    }
+
 
 }
